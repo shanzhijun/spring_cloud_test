@@ -1,0 +1,16 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: order-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka/,http://localhost:9100/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    ### 客户端向eureka服务器发送心跳的时间间隔，单位为秒
+    lease-renewal-interval-in-seconds: 1
+    ### Eureka服务器在收到最后一次心跳之后等待的时间上限，单位为秒，超过则删除
+    lease-expiration-duration-in-seconds: 2

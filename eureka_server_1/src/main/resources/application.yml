@@ -1,0 +1,22 @@
+### 服务端口号
+server:
+  port: 8100
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    ###注册中心ip地址
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      ### 注册地址
+      defaultZone: http://${eureka.instance.hostname}:9100/eureka/
+    ###因为自己是注册中心，是否需要将自己注册到自己的注册中心（集群的时候为true,单点为 false）
+    register-with-eureka: true
+    ###因为自己是注册中心，不需要检索服务信息
+    fetch-registry: true
+  server:
+    #### 关闭自我保护机制，两秒中内剔除服务
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000

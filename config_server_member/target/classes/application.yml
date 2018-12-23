@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config-server-member
+  cloud:
+    config:
+      profile: dev
+      discovery:
+        service-id: config-server
+        enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka/,http://localhost:9100/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+server:
+  port: 8099
+# 开启所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

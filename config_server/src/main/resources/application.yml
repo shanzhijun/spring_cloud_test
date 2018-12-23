@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          # git地址
+          uri: https://github.com/shanzhijun/springCloudconfig.git
+          search-paths: #文件目录
+          - config-server-member
+          - config-server-order
+      label: master #分支
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka/,http://localhost:9100/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+server:
+  port: 8888

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: config-server-order
+  cloud:
+    config:
+      # 环境
+      profile: dev
+      discovery:
+        # 文件配置中心名称
+        service-id: config-server
+        # 开启读取文件内容
+        enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka/,http://localhost:9100/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+server:
+  port: 8088
+# 开启所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

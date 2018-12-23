@@ -1,0 +1,18 @@
+server:
+  port: 9100
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8100/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  server:
+    #### 关闭自我保护机制，两秒中内剔除服务
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
+spring:
+  application:
+    ### 配置集群的时候这个名称必须设置并设置相同的名称
+    name: eureka-server
